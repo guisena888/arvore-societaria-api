@@ -35,6 +35,5 @@ class Investimento(
         @ManyToOne
         var investidor: Empresa,
 
-        var precoMedio: BigDecimal,
         var qtdCotas: Long
 )
