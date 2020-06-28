@@ -2,18 +2,20 @@ package com.fatec.ihc.arvoresocietaria.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fatec.ihc.arvoresocietaria.security.models.User
+import java.math.BigDecimal
 import javax.persistence.*
 
 @Entity
 class Empresa(
-        @Id @GeneratedValue(strategy = GenerationType.AUTO) var id: Long? = null,
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long? = null,
 
         @Column(unique=true)
         var name: String,
 
         @Column(unique=true)
         var cnpj: String,
-        var patrimonio: Long,
+        var patrimonio: BigDecimal,
 
         @ManyToOne
         @JsonIgnore
@@ -23,12 +25,15 @@ class Empresa(
 
 @Entity
 class Investimento(
-        @Id @GeneratedValue(strategy = GenerationType.AUTO) var id: Long? = null,
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long? = null,
+
         @ManyToOne
         var empresa: Empresa,
 
         @ManyToOne
         var investidor: Empresa,
 
-        var valorInvestido: Long
+        var precoMedio: BigDecimal,
+        var qtdCotas: Long
 )

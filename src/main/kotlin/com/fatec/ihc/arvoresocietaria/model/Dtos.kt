@@ -1,5 +1,7 @@
 package com.fatec.ihc.arvoresocietaria.model
 
+import java.math.BigDecimal
+
 data class EmpresaDto (
     var id: Long? = null,
     var name: String,
@@ -16,5 +18,6 @@ data class EmpresaInvestidorDto (
 data class InvestimentoForm (
     var idEmpresa: Long,
     var idInvestidor: Long,
-    var valorInvestido: Long
+    var qtdCotas: Long,
+    var precoCota: BigDecimal
 )

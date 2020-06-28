@@ -61,7 +61,13 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().
-                    antMatchers("/api/auth/**","/h2-console/**").permitAll()
+                    antMatchers("/v2/api-docs",
+                        "/configuration/ui",
+                        "/swagger-resources/**",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/webjars/**").permitAll()
+                    .antMatchers("/api/auth/**","/h2-console/**", "/swagger-ui.html").permitAll()
                     .antMatchers(HttpMethod.GET, "/empresa**", "/empresa/**").permitAll()
                 .anyRequest().authenticated()
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)

@@ -6,7 +6,8 @@ import com.fatec.ihc.arvoresocietaria.repository.InvestimentoRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
-@RestController("/investimento")
+@RestController
+@RequestMapping("/investimento")
 class InvestimentoController {
 
     @Autowired
