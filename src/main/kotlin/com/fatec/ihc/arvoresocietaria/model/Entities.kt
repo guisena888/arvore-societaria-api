@@ -16,6 +16,7 @@ class Empresa(
         @Column(unique=true)
         var cnpj: String,
         var patrimonio: BigDecimal,
+        var qtdCotasTotal: Long,
 
         @ManyToOne
         @JsonIgnore
