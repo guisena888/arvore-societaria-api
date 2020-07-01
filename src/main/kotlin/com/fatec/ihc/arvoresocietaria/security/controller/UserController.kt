@@ -32,7 +32,7 @@ class UserController {
         return ResponseEntity.ok(user)
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     fun deleteUser(@PathVariable("id") id: Long) : ResponseEntity<Any>{
         var userOptional = userRespository.findById(id)
         if (!userOptional.isPresent) return ResponseEntity.notFound().build()
