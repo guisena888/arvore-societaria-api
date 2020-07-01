@@ -1,6 +1,7 @@
 package com.fatec.ihc.arvoresocietaria.model
 
 import java.math.BigDecimal
+import javax.persistence.*
 
 data class EmpresaDto (
     var id: Long? = null,
@@ -18,6 +19,31 @@ data class EmpresaInvestidorDto (
 data class InvestimentoForm (
     var idEmpresa: Long,
     var idInvestidor: Long,
-    var qtdCotas: Long,
-    var precoCota: BigDecimal
+    var qtdCotas: Long
 )
+
+class InvestidorDto {
+
+    var investidor: Empresa? = null
+
+    var qtdCotas: Long = 0
+
+    constructor(investimento: Investimento){
+        this.investidor = investimento.investidor
+        this.qtdCotas = investimento.qtdCotas
+    }
+
+}
+
+class InvestidoDto {
+
+    var investido: Empresa? = null
+
+    var qtdCotas: Long = 0
+
+    constructor(investimento: Investimento){
+        this.investido = investimento.empresa
+        this.qtdCotas = investimento.qtdCotas
+    }
+
+}

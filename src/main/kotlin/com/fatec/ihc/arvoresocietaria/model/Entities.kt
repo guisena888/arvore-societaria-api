@@ -25,15 +25,17 @@ class Empresa(
 
 
 @Entity
-class Investimento(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long? = null,
+class Investimento {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long? = null
 
         @ManyToOne
-        var empresa: Empresa,
+        var empresa: Empresa? = null
 
         @ManyToOne
-        var investidor: Empresa,
+        var investidor: Empresa? = null
 
-        var qtdCotas: Long
-)
+        var qtdCotas: Long = 0
+
+}

@@ -35,6 +35,11 @@ class EmpresaController {
         return ResponseEntity.ok(empresaOptional.get())
     }
 
+    @GetMapping("/minhaempresa")
+    fun findByLoggedUser(): MutableIterable<Empresa> {
+        return empresaRepository.findByAdmin(findLoggedUser())
+    }
+
     @PostMapping
     fun create(@RequestBody empresa: Empresa): Empresa {
         var loggedUser = findLoggedUser()
